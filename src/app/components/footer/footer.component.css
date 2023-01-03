@@ -1,0 +1,28 @@
+input::-moz-placeholder {
+  color: white;
+}
+
+input:-ms-input-placeholder {
+  color: white;
+}
+
+input::placeholder {
+  color: white;
+}
+
+#footer {
+  background-color: #00b18f;
+}
+
+#email:hover {
+  border: none;
+}
+
+#SUBSCRIBE {
+  color: #00b18f;
+}
+
+#SUBSCRIBE:hover {
+  color: white;
+  background-color: transparent;
+}/*# sourceMappingURL=footer.component.css.map */
