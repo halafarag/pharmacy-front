@@ -1,0 +1,25 @@
+#reg {
+  background-color: #00b18f;
+  width: 600px;
+  height: 582px;
+  position: relative;
+}
+.child {
+  position: absolute;
+  top: 40%;
+  left: 25%;
+}
+.title {
+  color: #00b18f;
+}
+.LOG {
+  background-color: white;
+  color: #00b18f;
+}
+.LOG:hover {
+  background-color: #00b18f;
+  color: white;
+}
+.google {
+  background-color: #df4a32;
+}
