@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CategoryComponent } from './components/category/category.component';
+import { DetailsComponent } from './components/details/details.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,11 @@ import { CategoryComponent } from './components/category/category.component';
     LoginComponent,
     NotFoundComponent,
     RegisterComponent,
-    CategoryComponent
+    CategoryComponent,
+    DetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

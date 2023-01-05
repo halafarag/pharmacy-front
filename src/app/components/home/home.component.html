@@ -66,7 +66,7 @@
           <div class="text-center mx-auto">
             <img
               src="https://www.fouda.com/sites/all/themes/custom/fp/img/slider/slide-1-1.png"
-              class="w-100 mx-auto card-img img-fluid"
+              class="w-100 mx-auto card-img img-fluid background"
             />
           </div>
         </div>
@@ -289,9 +289,9 @@
         OUR CATEGORIES
       </h1>
     </div>
-    <div class="col-lg-2 parent ms-3">
+    <div class="col-lg-2 parent ms-3" *ngFor="let cat of catList">
       <div class="child1">
-        <div class="child2">Medicines</div>
+        <div class="child2">{{ cat?.name }}</div>
       </div>
     </div>
     <div class="col-lg-2 parent ms-3">

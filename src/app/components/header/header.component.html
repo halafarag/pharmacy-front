@@ -1,7 +1,8 @@
 <!-- Navbar-->
 <nav
-  class="navbar navbar-expand-lg navbar-light text-white p-0 m-0 fixed-top mb-5"
-  style="background-color: #00b18f"
+  class="navbar navbar-expand-lg navbar-light text-white p-0 m-0 fixed-top mb-5 background"
+  style=""
+  (scroll)="onWindowScroll()"
 >
   <div class="container-fluid justify-content-between m-0 p-0">
     <!-- Left elements -->
@@ -61,7 +62,7 @@
               <input
                 autocomplete="off"
                 type="search"
-                class="form-control rounded rounded-pill text-success"
+                class="form-control rounded rounded-pill text-success shadow"
                 placeholder="Search"
                 style="min-width: 125px; color: #00b18f"
               />
@@ -141,7 +142,7 @@
 
                   <a
                     routerLink="/main/register"
-                    class="btn w-75 mt-4 mx-auto rounded-pill shadow bg-body"
+                    class="btn w-75 mt-4 mx-auto rounded-pill shadow bg-body user"
                     id="sign"
                     >SIGNUP</a
                   >
@@ -152,11 +153,11 @@
           <li class="nav-item me-lg-1 p-2 col mt-1">
             <a class=""
               ><i
-                class="bi bi-bag-fill text-white fs-5 row d-flex align-items-center justify-content-center"
+                class="bi bi-bag-fill text-white fs-5 row d-flex align-items-center justify-content-center cart1"
               ></i
             ></a>
             <a type="button">
-              <p class="text-center row">Cart</p>
+              <p class="text-center row cart2">Cart</p>
             </a>
           </li>
         </ul>

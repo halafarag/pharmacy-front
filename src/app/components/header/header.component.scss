@@ -6,3 +6,10 @@
 #sign {
   color: #00b18f;
 }
+.background {
+  background-color: #00b18f;
+  // transition: 1.5s ease-in;
+}
+.background.scrolled {
+  color: red !important;
+}
