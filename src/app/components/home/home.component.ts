@@ -23,7 +23,7 @@ export class HomeComponent {
   getAllCategory() {
     this.catService.getAllCategory().subscribe((data: Category) => {
       this.catList = data;
-      console.log(this.catList);
+      // console.log(this.catList);
     });
   }
 

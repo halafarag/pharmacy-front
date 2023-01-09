@@ -14,6 +14,9 @@ import { SubCategoryComponent } from './components/subCategory/subCategory.compo
 import { DetailsComponent } from './components/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductsOfSubCatComponent } from './components/products-of-sub-cat/products-of-sub-cat.component';
+import { CartComponent } from './components/cart/cart.component';
+import { FavouriteComponent } from './components/favourite/favourite.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     SubCategoryComponent,
     DetailsComponent,
+    ProductsOfSubCatComponent,
+    CartComponent,
+    FavouriteComponent,
   ],
   imports: [
     BrowserModule,

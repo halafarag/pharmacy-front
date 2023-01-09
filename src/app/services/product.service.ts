@@ -13,4 +13,12 @@ export class ProductService {
       `http://localhost:8081/product/category/${catID}`
     );
   }
+  getPrdBySubCatID(subID: string): Observable<Product> {
+    return this.http.get<Product>(
+      `http://localhost:8081/product/subcat/${subID}`
+    );
+  }
+  getProductByID(id: string): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8081/product/${id}`);
+  }
 }

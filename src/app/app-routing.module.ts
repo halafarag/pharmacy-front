@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProductsOfSubCatComponent } from './components/products-of-sub-cat/products-of-sub-cat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'subCategory', component: SubCategoryComponent },
+      { path: 'productOfSub', component: ProductsOfSubCatComponent },
       { path: 'details', component: DetailsComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },

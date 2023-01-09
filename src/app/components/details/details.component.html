@@ -4,19 +4,18 @@
       <div class="col-lg-4 col-sm-12 m-auto">
         <div class="card im border-0 shadow">
           <img
-            src="https://www.fouda.com/sites/default/files/2019/05/11/product/ESL_2543.png"
+            src="{{ product?.img }}"
             class="card-img-top img-fluid col-4"
-            width="470"
-            height="470"
+            style="width: 470px; height: 470px !important"
           />
         </div>
       </div>
       <div class="col-lg-5 col-sm-12 pt-5 pe-5 me-5">
         <div>
-          <h5 class="pb-3">LADY SPEED STICK WILD FREESIA 65-GM</h5>
+          <h5 class="pb-3">{{ product?.title }}</h5>
           <div class="row d-flex flex-wrap w-75 text-danger">
-            <span class="text-start w-25">98.00 EGP</span>
-            <span class="text-end w-25">65</span>
+            <span class="text-start w-25">{{ product?.price | currency }}</span>
+            <span class="text-end w-25">{{ product?.volume }}</span>
           </div>
 
           <a class="card-link text-dark text-end pb-0 mb-0">

@@ -36,6 +36,7 @@ export class LoginComponent {
       // console.log(data);
       localStorage.setItem('userName', this.newUser.userName);
       localStorage.setItem('accessToken', this.newUser.accessToken);
+      localStorage.setItem('id', this.newUser._id);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
