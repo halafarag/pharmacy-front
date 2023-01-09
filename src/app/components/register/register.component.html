@@ -9,13 +9,14 @@
           <div class="child text-center text-white">
             <h4>HAVE AN ACCOUNT !</h4>
             <p>Please log in to proceed to checkout</p>
-            <button
-              type="submit"
+            <a
+              type="button"
               class="btn rounded-pill shadow col-3 ms-3 mb-2 w-100"
               style="background-color: white; color: #00b18f"
+              routerLink="/main/login"
             >
               LOG IN & CHECKOUT
-            </button>
+            </a>
           </div>
         </div>
         <div
@@ -39,8 +40,11 @@
               <span class="col-1 text-center">OR</span>
             </div>
           </div>
-
-          <form class="col-lg-12 m-auto">
+          <form
+            class="col-lg-12 m-auto"
+            [formGroup]="registerForm"
+            (ngSubmit)="register()"
+          >
             <div class="row g-3 align-items-center">
               <div class="col-auto">
                 <label for="mobile" class="col-form-label pe-3"
@@ -49,10 +53,28 @@
               </div>
               <div class="col-9">
                 <input
-                  type="number"
                   id="mobile"
                   class="form-control ps-1 rounded-pill p-1 mb-2"
+                  formControlName="moblieNum"
+                  [class.is-invalid]="moblieNum?.invalid && moblieNum?.touched"
                 />
+                <div
+                  *ngIf="moblieNum?.invalid && moblieNum?.touched"
+                  class="pt-0 mt-0 form-text text-danger"
+                >
+                  <small
+                    *ngIf="moblieNum?.errors?.['required']"
+                    class="form-text text-danger pt-0 mt-0"
+                    style="font-size: 80%"
+                    >Mobile Number is Required</small
+                  >
+                  <small
+                    *ngIf="moblieNum?.errors?.['pattern']"
+                    class="form-text text-danger"
+                    style="font-size: 80%"
+                    >Mobile Number Shoud be 11 number</small
+                  >
+                </div>
               </div>
             </div>
             <div class="row g-3 align-items-center">
@@ -66,7 +88,42 @@
                   type="text"
                   id="userName"
                   class="form-control rounded-pill p-1"
+                  formControlName="userName"
+                  [class.is-invalid]="userName?.invalid && userName?.touched"
                 />
+                <div
+                  *ngIf="userName?.errors?.['minLength'] && userName?.touched"
+                >
+                  <small
+                    *ngIf="userName?.errors?.['minLength']"
+                    class="form-text text-danger"
+                    >Username Must Be Taller than 3 charcters</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center">
+              <div class="col-auto">
+                <label for="password" class="col-form-label"
+                  >Password <span class="text-danger fw-bold">*</span></label
+                >
+              </div>
+              <div class="col-9">
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control rounded-pill p-1"
+                  formControlName="password"
+                  [class.is-invalid]="password?.invalid && password?.touched"
+                />
+                <div *ngIf="password?.invalid && password?.touched">
+                  <small
+                    *ngIf="password?.errors?.['pattern']"
+                    class="form-text text-danger"
+                    >Password Minimum eight characters, at least one uppercase
+                    letter, one lowercase letter and one number</small
+                  >
+                </div>
               </div>
             </div>
             <div class="mb-3 col-9">
@@ -78,16 +135,33 @@
                 class="form-control rounded-pill p-1"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                formControlName="emailAdress"
+                [class.is-invalid]="
+                  emailAdress?.invalid && emailAdress?.touched
+                "
               />
-              <!-- <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
-              </div> -->
+              <div *ngIf="emailAdress?.invalid && emailAdress?.touched">
+                <small
+                  id="emailHelp"
+                  class="form-text text-danger"
+                  *ngIf="emailAdress?.errors?.['required']"
+                >
+                  Email is Required .
+                </small>
+                <small
+                  id="emailHelp"
+                  class="form-text text-danger"
+                  *ngIf="emailAdress?.errors?.['email']"
+                >
+                  Email Shoud contain @ .
+                </small>
+              </div>
             </div>
-
             <div class="row">
               <button
                 type="submit"
                 class="btn rounded-pill shadow LOG col-lg-5 col-sm-1 ms-3 mb-2 mt-2"
+                [disabled]="!registerForm.valid"
               >
                 CREAT NEW ACCOUNT
               </button>

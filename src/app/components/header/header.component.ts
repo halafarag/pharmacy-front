@@ -9,16 +9,20 @@ export class HeaderComponent {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     // let element = document.querySelector('.background') as HTMLElement;
-    // let element1 = document.querySelector('.cart1') as HTMLElement;
-    // let element2 = document.querySelector('.cart2') as HTMLElement;
+    // let element3 = window.document.getElementsByClassName(
+    //   'ahmed'
+    // ) as HTMLCollection;
+    // console.log(element3);
     // if (window.pageYOffset > element.clientHeight) {
     //   element.classList.add('bg-light');
-    //   element1.classList.add('text-success');
-    //   element2.classList.add('text-success');
+    //   Array.from(element3).forEach((i) => {
+    //     i.classList.replace('text-white', 'text-success');
+    //   });
     // } else {
     //   element.classList.remove('bg-light');
-    //   element1.classList.remove('text-success');
-    //   element2.classList.remove('text-success');
+    //   Array.from(element3).forEach((i) => {
+    //     i.classList.replace('text-success', 'text-white');
+    //   });
     // }
   }
 }

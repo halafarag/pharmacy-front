@@ -10,9 +10,10 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
-import { CategoryComponent } from './components/category/category.component';
+import { SubCategoryComponent } from './components/subCategory/subCategory.component';
 import { DetailsComponent } from './components/details/details.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,15 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     NotFoundComponent,
     RegisterComponent,
-    CategoryComponent,
+    SubCategoryComponent,
     DetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

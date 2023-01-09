@@ -10,7 +10,12 @@
             <h3 class="title pb-3">HAVE AN ACCOUNT</h3>
             <p class="text-muted pb-4">Please log in to proceed to checkout</p>
           </div>
-          <form class="col-lg-9 m-auto">
+          {{ loginForm.value | json }}
+          <form
+            class="col-lg-9 m-auto"
+            [formGroup]="loginForm"
+            (ngSubmit)="login()"
+          >
             <div class="mb-3">
               <!-- <label for="exampleInputEmail1" class="form-label"
                   >Email address</label
@@ -21,6 +26,7 @@
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="UserName"
+                formControlName="userName"
               />
               <div id="emailHelp" class="form-text">
                 We'll never share your email with anyone else.
@@ -35,12 +41,14 @@
                 class="form-control rounded-pill p-1"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                formControlName="password"
               />
             </div>
             <div class="row">
               <button
                 type="submit"
                 class="btn rounded-pill shadow LOG col-lg-3 col-sm-1 ms-3 mb-2"
+                [disabled]="!loginForm.valid"
               >
                 LOG IN
               </button>
@@ -63,13 +71,14 @@
           <div class="child text-center text-white">
             <h4>NO ACCOUNT YET?!</h4>
             <p>Create an account in order to checkout</p>
-            <button
-              type="submit"
+            <a
+              type="button"
               class="btn rounded-pill shadow col-3 ms-3 mb-2 w-100"
               style="background-color: white; color: #00b18f"
+              routerLink="/main/register"
             >
               CREAT AN ACCOUNT
-            </button>
+            </a>
           </div>
         </div>
       </div>

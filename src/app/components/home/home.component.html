@@ -289,64 +289,28 @@
         OUR CATEGORIES
       </h1>
     </div>
-    <div class="col-lg-2 parent ms-3" *ngFor="let cat of catList">
-      <div class="child1">
-        <div class="child2">{{ cat?.name }}</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <!--  -->
-  </div>
-  <!-- row2 -->
-  <div class="row d-flex justify-content-center align-items-center m-auto">
-    <div class="col-lg-2 parent2 ms-3">
-      <div class="child12">
-        <div class="child22">
-          <a class="nav-link" routerLink="/main/category">Beauty</a>
+    <div
+      class="col-lg-2 col-md-3 col-sm-5 ms-1 mb-4"
+      *ngFor="let cat of catList"
+    >
+      <div class="card text-white border-0 rounded">
+        <img [src]="cat.img" class="card-img border-0 img1" />
+        <div class="card-img-overlay">
+          <div
+            class="child1 d-flex justify-content-center align-items-center fs-5 fw-bold"
+          >
+            <a
+              type="button"
+              class="nav-link text-white"
+              (click)="getPrdByCatID(cat)"
+              >{{ cat?.name }}</a
+            >
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-2 parent3 ms-3">
-      <div class="child13">
-        <div class="child23">Hair Care</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <div class="col-lg-2 parent ms-3">
-      <div class="child1">
-        <div class="child2">Medicines</div>
-      </div>
-    </div>
-    <!--  -->
   </div>
+  <!-- row2 -->
 </div>
 <!-- Featured products -->
 <div class="container-fluid mt-5 py-5">
