@@ -20,6 +20,7 @@ export class SubCategoryComponent {
   subList: Subcategory | any;
   cartList: Cart | any;
   searchPrd: Product | any;
+  searchText: any;
   constructor(
     private prdService: ProductService,
     private activatedroute: ActivatedRoute,

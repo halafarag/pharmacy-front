@@ -11,11 +11,11 @@
       <input
         class="form-control me-2"
         type="search"
-        placeholder="Search with product name"
+        placeholder="Search with product name or his id"
         aria-label="Search"
         id="search"
         name="search"
-        #prdName
+        [(ngModel)]="searchText"
       />
       <button class="btn btn-outline-success">
         <!-- (click)="searchFun(prdName.value)" -->
@@ -139,7 +139,7 @@
       </div>
       <div
         class="col-xl-3 col-md-6 col-sm-12"
-        *ngFor="let prd of prdList"
+        *ngFor="let prd of prdList | filter : searchText"
         let
         i="index"
       >
