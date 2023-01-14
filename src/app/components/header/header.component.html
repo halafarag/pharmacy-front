@@ -137,12 +137,14 @@
                     class="btn w-75 mt-5 mx-auto rounded-pill fw-bold shadow log"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal2"
+                    data-bs-dismiss="offcanvas"
                     >LOGIN</a
                   >
 
                   <a
                     routerLink="/main/register"
                     class="btn w-75 mt-4 mx-auto rounded-pill shadow bg-body user"
+                    data-bs-dismiss="offcanvas"
                     id="sign"
                     >SIGNUP</a
                   >
@@ -157,7 +159,19 @@
               ></i
             ></a>
             <a type="button">
-              <p class="text-center row cart2">Cart</p>
+              <a
+                type="button"
+                class="text-center row cart2 text-white text-decoration-none mt-1"
+                routerLink="/main/cart"
+              >
+                Cart
+              </a>
+              <span
+                class="position-absolute top-0 mt-5 ms-4 start-90 translate-middle badge rounded-pill bg-danger"
+                [hidden]="cartList?.length == 0"
+              >
+                {{ cartList?.length }}
+              </span>
             </a>
           </li>
         </ul>
@@ -169,3 +183,4 @@
 </nav>
 <!-- Navbar -->
 <!-- offcenve -->
+<input type="" name="" id="" />

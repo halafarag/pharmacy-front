@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Cart } from 'src/app/models/cart';
 import { Product } from 'src/app/models/product';
 import { Subcategory } from 'src/app/models/subcategory';
+import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
+import Swal from 'sweetalert2';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-subCategory',
@@ -14,11 +18,14 @@ import { SubcategoryService } from 'src/app/services/subcategory.service';
 export class SubCategoryComponent {
   prdList: Product | any;
   subList: Subcategory | any;
+  cartList: Cart | any;
+  searchPrd: Product | any;
   constructor(
     private prdService: ProductService,
     private activatedroute: ActivatedRoute,
     private subService: SubcategoryService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   // DESPLAY ALL PRODUCTS FOR SPECFIC CATEGORY IN CARD (get product by cat id)
@@ -49,6 +56,42 @@ export class SubCategoryComponent {
     this.router.navigate(['/main/details', prd]);
     window.scrollTo(0, 0);
   }
+  // ADD TO CART
+  public user = localStorage.getItem('id');
+  addToCart(prd: any, user: any, amount: any) {
+    this.cartService.addToCart(prd, user, amount).subscribe({
+      next: (cart) => {
+        console.log(cart);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Product added to your cart sucsessfully ',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      },
+    });
+    console.log(prd, user);
+  }
+  // SEARCH
+  // searchProdcutByName(prdName: string): Product | undefined {
+  //   return this.prdList.find((searchPrd: Product) => searchPrd.name == prdName);
+  // }
+  // searchFun(prdName: string) {
+  //   console.log(prdName);
+  //   let result = this.searchProdcutByName(prdName);
+  //   console.log(result);
+  //   if (result) {
+  //     this.searchPrd = result;
+  //   } else {
+  //     alert('product not found');
+  //   }
+  // }
   ngOnInit() {
     this.getPrdByCatID();
     this.getSubOfCategory();

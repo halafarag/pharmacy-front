@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductsOfSubCatComponent } from './components/products-of-sub-cat/products-of-sub-cat.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
+import { HeaderColorDirective } from './directives/header-color.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { FavouriteComponent } from './components/favourite/favourite.component';
     ProductsOfSubCatComponent,
     CartComponent,
     FavouriteComponent,
+    HeaderColorDirective,
   ],
   imports: [
     BrowserModule,

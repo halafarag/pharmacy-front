@@ -8,11 +8,11 @@
     <!-- subcategory -->
     <div
       class="row d-flex justify-content-center align-items-center m-auto col-9"
-      *ngFor="let sub of prdList"
     >
       <a
+        *ngFor="let sub of prdList"
         type="button"
-        class="btn px-1 rounded-pill border-0 shadow text-muted m-3 col-2 sub"
+        class="btn rounded-pill border-0 shadow text-muted m-3 col-3 sub"
         >{{ sub.title }}</a
       >
     </div>
@@ -130,6 +130,7 @@
             <p class="card-text pt-0 mt-0 pb-0 mb-0" style="color: #00b18f">
               {{ prd.title }}
             </p>
+
             <div class="card-body d-flex justify-content-between pb-0 mb-0">
               <p class="card-link text-danger pt-0 mt-0 text-start">
                 {{ prd.price | currency }}
@@ -143,7 +144,15 @@
               </a>
             </div>
             <div class="border-bottom border-secondry w-100"></div>
-            <p class="text-danger pt-2">Out of stock</p>
+            <p *ngIf="prd.quantity < 1" class="text-danger pt-2">
+              Out of stock
+            </p>
+            <a
+              *ngIf="prd.quantity >= 1"
+              type="button"
+              class="pt-2 btn btnCart text-muted shadow rounded-pill mt-4"
+              >ADD TO CART</a
+            >
           </div>
         </div>
       </div>

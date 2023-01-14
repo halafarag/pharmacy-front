@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { Cart } from 'src/app/models/cart';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,8 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  cartList: Cart | any;
+  constructor(private cartService: CartService) {}
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     // let element = document.querySelector('.background') as HTMLElement;
@@ -24,5 +28,15 @@ export class HeaderComponent {
     //     i.classList.replace('text-success', 'text-white');
     //   });
     // }
+  }
+  // getCartByUserID() {
+  //   const id = localStorage.getItem('id');
+  //   this.cartService.getCartByUserID(id || '').subscribe((data: any) => {
+  //     this.cartList = data;
+  //     console.log(this.cartList);
+  //   });
+  // }
+  ngOnInit(): void {
+    // this.getCartByUserID();
   }
 }

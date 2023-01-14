@@ -18,7 +18,7 @@ export class DetailsComponent {
     const id = this.activateRoute.snapshot.paramMap.get('_id');
     this.prdService.getProductByID(id || '').subscribe((data) => {
       this.product = data;
-      console.log(data);
+      // console.log(data);
     });
   }
   ngOnInit(): void {

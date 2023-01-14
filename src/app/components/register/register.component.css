@@ -1,7 +1,7 @@
 #reg {
   background-color: #00b18f;
   width: 600px;
-  height: 512px;
+  height: 620px;
   position: relative;
 }
 
@@ -27,4 +27,4 @@
 
 .google {
   background-color: #df4a32;
-}/*# sourceMappingURL=login.component.css.map */
+}/*# sourceMappingURL=register.component.css.map */

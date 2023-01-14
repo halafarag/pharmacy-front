@@ -1,16 +1,19 @@
 #cart {
   color: #00b18f;
-  box-shadow: 0 1px 10px rgb(0 0 0 / 20%);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 }
+
 #cart:hover {
   color: white;
   background-color: #00b18f;
 }
-input[type="checkbox"] {
+
+input[type=checkbox] {
   display: grid;
   place-content: center;
 }
-input[type="checkbox"]::before {
+
+input[type=checkbox]::before {
   content: "";
   width: 0.65em;
   height: 0.65em;
@@ -19,23 +22,28 @@ input[type="checkbox"]::before {
   box-shadow: inset 1em 1em var(--form-control-color);
 }
 
-input[type="checkbox"]:checked::before {
+input[type=checkbox]:checked::before {
   transform: scale(1);
 }
-input[type="checkbox"]::before {
+
+input[type=checkbox]::before {
   background-color: #00b18f;
 }
-input[type="checkbox"]:checked::after {
+
+input[type=checkbox]:checked::after {
   background-color: white;
 }
+
 .sub {
   background-color: #f4f4f4;
 }
+
 .sub:hover {
   background-color: #00b18f;
   color: white;
 }
+
 .btnCart:hover {
   background-color: #00b18f;
   color: white !important;
-}
+}/*# sourceMappingURL=subCategory.component.css.map */
