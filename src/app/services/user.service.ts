@@ -16,4 +16,8 @@ export class UserService {
   login(user: User): Observable<User> {
     return this.http.post<User>(`http://localhost:8081/users/login`, user);
   }
+  // LOGOUT
+  logout(id: string) {
+    return this.http.get(`http://localhost:8081/users/logout/${id}`);
+  }
 }

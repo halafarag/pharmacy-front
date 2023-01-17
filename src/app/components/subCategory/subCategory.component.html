@@ -3,13 +3,13 @@
     <div class="row">
       <h1 class="text-center text-danger fw-bold">
         <i class="fa-brands fa-uniregistry text-danger p-4"></i>
-        <!-- {{ prdList[0]?.category?.name }} -->
+        {{ prdList[0]?.category?.name || undefined }}
       </h1>
     </div>
     <!-- subcategory -->
-    <div class="d-flex col-5 m-auto">
+    <div class="d-flex col-lg-5 col-sm-2 m-auto">
       <input
-        class="form-control me-2"
+        class="form-control me-2 rounded-pill m-5"
         type="search"
         placeholder="Search with product name or his id"
         aria-label="Search"
@@ -17,10 +17,10 @@
         name="search"
         [(ngModel)]="searchText"
       />
-      <button class="btn btn-outline-success">
-        <!-- (click)="searchFun(prdName.value)" -->
-        Search
-      </button>
+      <!-- <button class="btn btn-outline-success"> -->
+      <!-- (click)="searchFun(prdName.value)" -->
+      <!-- Search
+      </button> -->
     </div>
 
     <div
@@ -29,7 +29,7 @@
       <a
         *ngFor="let sub of subList"
         type="button"
-        class="btn px-2 rounded-pill border-0 shadow text-muted m-3 col-2 sub"
+        class="btn px-2 rounded-pill border-0 shadow text-muted m-3 col-sm-2 sub"
         (click)="getPrdOfSubID(sub)"
         >{{ sub.name }}</a
       >
@@ -37,9 +37,9 @@
 
     <!-- products -->
     <div
-      class="row d-flex justify-content-center align-items-center m-auto col-9"
+      class="row d-flex justify-content-center align-items-center m-auto col-10"
     >
-      <div class="col-xl-3 col-md-6 col-sm-12">
+      <div class="col-xl-3 col-md-6 col-sm-12 p-1">
         <div class="card mb-3 shadow" style="width: 262px; height: 400px">
           <ul class="list-group pt-0 mt-0">
             <li

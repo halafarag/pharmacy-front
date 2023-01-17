@@ -1,17 +1,16 @@
 <div class="container-fluid pt-5 mt-2 pb-5 mb-5">
   <div class="mt-5 pt-5">
-    <div class="row d-flex m-auto">
-      <div class="col-lg-4 col-sm-12 m-auto">
+    <div class="row d-flex col-11 m-auto">
+      <div class="col-lg-4 col-sm-12 m-auto m-0 p-0">
         <div class="card im border-0 shadow">
           <img
             src="{{ product?.img }}"
-            class="card-img-top img-fluid col-4"
-            style="width: 470px; height: 470px !important"
+            class="card-img-top img-fluid m-auto rounded-5"
             loading="lazy"
           />
         </div>
       </div>
-      <div class="col-lg-5 col-sm-12 pt-5 pe-5 me-5">
+      <div class="col-lg-6 col-sm-12 pt-5 px-0 mx-0">
         <div>
           <h5 class="pb-3">{{ product?.title }}</h5>
           <div class="row d-flex flex-wrap w-75 text-danger">
@@ -28,8 +27,16 @@
           </a>
         </div>
         <div class="row d-flex justify-content-between pt-5 mt-5">
-          <p class="col-10 text-danger">Out of stock</p>
-          <a href="" class="col-1"
+          <p class="col-4 mx-0 text-danger" *ngIf="product.quantity < 1">
+            Out of stock
+          </p>
+          <a
+            type="button"
+            class="pt-2 btn btnCart text-muted shadow rounded-pill w-25"
+            *ngIf="product.quantity >= 1"
+            >ADD TO CART</a
+          >
+          <a href="" class="col-4"
             ><i class="bi bi-heart fs-4 text-secondary"></i
           ></a>
         </div>

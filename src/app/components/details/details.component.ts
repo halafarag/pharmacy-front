@@ -15,7 +15,7 @@ export class DetailsComponent {
     private activateRoute: ActivatedRoute
   ) {}
   getProductByID() {
-    const id = this.activateRoute.snapshot.paramMap.get('_id');
+    const id = this.activateRoute.snapshot.paramMap.get('id');
     this.prdService.getProductByID(id || '').subscribe((data) => {
       this.product = data;
       // console.log(data);

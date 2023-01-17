@@ -19,6 +19,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
 import { HeaderColorDirective } from './directives/header-color.directive';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CartComponent,
     FavouriteComponent,
     HeaderColorDirective,
+    AboutUsComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

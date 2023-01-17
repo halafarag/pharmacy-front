@@ -23,7 +23,7 @@ export class HomeComponent {
   getAllCategory() {
     this.catService.getAllCategory().subscribe((data: Category) => {
       this.catList = data;
-      // console.log(this.catList);
+      console.log(this.catList);
     });
   }
 
@@ -33,9 +33,10 @@ export class HomeComponent {
   //     console.log(data);
   //   });
   // }
-  getPrdByCatID(catID: string) {
-    this.router.navigate(['/main/subCategory', catID]);
+  getPrdByCatID(catID: Category) {
+    this.router.navigate([`/main/subCategory/${catID._id}`]);
     window.scrollTo(0, 0);
+    console.log(catID._id);
   }
   ngOnInit(): void {
     this.getAllCategory();

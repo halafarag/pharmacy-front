@@ -1,10 +1,7 @@
-<div class="container-fluid pt-5 mt-2 pb-5 mb-5">
+<div class="container-fluid mt-2 pb-5 mb-5">
   <div class="mt-5 pt-5">
     <div class="">
-      <div
-        class="row d-flex justify-content-center align-items-center m-auto"
-        *ngFor="let cart of cartList"
-      >
+      <div class="row d-flex justify-content-center align-items-center m-auto">
         <div class="text-center">
           <p
             style="
@@ -14,7 +11,7 @@
               font-weight: bold;
             "
           >
-            WELCOME {{ cart?.user.userName }}
+            WELCOME {{ cartList[0]?.user?.userName }}
           </p>
           <h1
             class="pt-1 mb-4 fw-bold"
@@ -33,7 +30,7 @@
         <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let cart of cartList">
           <div
             class="card mb-3 shadow ms-5"
-            style="width: 362px; height: 470px; cursor: pointer"
+            style="width: 362px; height: 500px; cursor: pointer"
           >
             <img
               src="{{ cart?.product?.img }}"
@@ -42,17 +39,21 @@
               height="280"
             />
             <div class="card-body pt-0 mt-0 pb-0 mb-0">
-              <p class="card-text pt-0 mt-0 pb-0 mb-0" style="color: #00b18f">
+              <p
+                class="card-text pt-0 mt-0 pb-0 mb-0 ps-3"
+                style="color: #00b18f"
+              >
                 {{ cart?.product?.title }}
               </p>
-              <p class="card-text pt-0 mt-0 pb-0 mb-0">
+              <p class="card-text pt-0 mt-0 pb-0 mb-0 ps-3">
                 {{ cart?.product?.volume }}
               </p>
 
               <div class="card-body d-flex justify-content-between pb-0 mb-0">
-                <p class="card-link text-danger pt-0 mt-0 text-start">
-                  {{ cart?.product?.price | currency }}
+                <p class="card-link text-danger pt-0 mt-0 text-start mb-0">
+                  {{ cart?.product?.price | currency : " EGP " }}
                 </p>
+
                 <a class="card-link text-dark text-end pb-0 mb-0">
                   <a href="" class="text-dark"><i class="bi bi-star"></i></a>
                   <a href="" class="text-dark"><i class="bi bi-star"></i></a>
@@ -61,7 +62,17 @@
                   <a href="" class="text-dark"><i class="bi bi-star"></i></a>
                 </a>
               </div>
-              <div class="border-bottom border-secondry w-100 mb-3"></div>
+
+              <div class="ms-3">
+                <p class="mb-0">
+                  <span class="text-danger">Amount :</span>{{ cart.amount }}
+                </p>
+                <p class="">
+                  <span class="text-danger">Total price :</span>
+                  {{ cart?.amount * cart?.product?.price | currency : " EGP " }}
+                </p>
+              </div>
+              <div class="border-bottom border-secondry w-100 mb-1"></div>
               <div class="row d-flex justify-content-between">
                 <a
                   type="button"
@@ -70,7 +81,7 @@
                 >
                 <a
                   type="button"
-                  class="pt-2 btn btnCart text-muted shadow rounded-pill text-end w-25 m-2"
+                  class="p-0 m-0 p-2 btn btnCart text-muted shadow rounded-pill text-end w-25 m-2"
                   (click)="remove(cart._id)"
                   >REMOVE</a
                 >

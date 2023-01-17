@@ -58,3 +58,21 @@
   opacity: 0.5;
   border-radius: 10px;
 }
+
+#main {
+  position: relative;
+}
+
+#layer1 {
+  position: absolute;
+  bottom: 0.01px;
+  right: 0.01px;
+  height: 100%;
+  width: 100%;
+  background: #00b18f;
+  opacity: 0.7;
+}
+
+#layer2 {
+  position: absolute;
+}

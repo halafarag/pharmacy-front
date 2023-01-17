@@ -2,15 +2,12 @@
   <div class="py-5 mt-5">
     <div class="py-5">
       <div class="row d-flex justify-content-center align-items-center m-auto">
-        <div
-          class="col-lg-5 border border-success p-5 shadow rounded-start"
-          id="radius"
-        >
+        <div class="col-lg-5 p-5 shadow rounded-start" id="radius">
           <div class="text-center">
             <h3 class="title pb-3">HAVE AN ACCOUNT</h3>
             <p class="text-muted pb-4">Please log in to proceed to checkout</p>
           </div>
-          {{ loginForm.value | json }}
+          <!-- {{ loginForm.value | json }} -->
           <form
             class="col-lg-9 m-auto"
             [formGroup]="loginForm"
@@ -29,7 +26,7 @@
                 formControlName="userName"
               />
               <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
+                We'll never share your userName with anyone else.
               </div>
             </div>
             <div class="mb-3">
@@ -65,7 +62,7 @@
         </div>
 
         <div
-          class="col-lg-5 shadow border border-success rounded-end d-none d-xl-block d-lg-none"
+          class="col-lg-5 shadow rounded-end d-none d-xl-block d-lg-none"
           id="reg"
         >
           <div class="child text-center text-white">

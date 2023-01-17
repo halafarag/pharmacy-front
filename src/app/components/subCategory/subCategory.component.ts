@@ -31,7 +31,7 @@ export class SubCategoryComponent {
 
   // DESPLAY ALL PRODUCTS FOR SPECFIC CATEGORY IN CARD (get product by cat id)
   getPrdByCatID() {
-    const id = this.activatedroute.snapshot.paramMap.get('_id');
+    const id = this.activatedroute.snapshot.paramMap.get('id');
     this.prdService.getPrdByCatID(id || '').subscribe((data: any) => {
       this.prdList = data;
       console.log(data);
@@ -53,8 +53,8 @@ export class SubCategoryComponent {
     window.scrollTo(0, 0);
   }
   //PRODUCT DETAILS
-  getPrdDetails(prd: string) {
-    this.router.navigate(['/main/details', prd]);
+  getPrdDetails(prd: Product) {
+    this.router.navigate([`/main/details/${prd._id}`]);
     window.scrollTo(0, 0);
   }
   // ADD TO CART
