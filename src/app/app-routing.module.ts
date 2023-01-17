@@ -10,6 +10,7 @@ import { ProductsOfSubCatComponent } from './components/products-of-sub-cat/prod
 import { CartComponent } from './components/cart/cart.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main/home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const routes: Routes = [
       { path: 'subCategory/:id', component: SubCategoryComponent },
       { path: 'productOfSub', component: ProductsOfSubCatComponent },
       { path: 'details/:id', component: DetailsComponent },
-      { path: 'cart', component: CartComponent },
+      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
       { path: 'blog', component: BlogComponent },
       { path: 'aboutUs', component: AboutUsComponent },
       { path: 'login', component: LoginComponent },
