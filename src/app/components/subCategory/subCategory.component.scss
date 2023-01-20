@@ -39,3 +39,12 @@ input[type="checkbox"]:checked::after {
   background-color: #00b18f;
   color: white !important;
 }
+.box {
+  border-radius: 10px;
+}
+option:hover {
+  background-color: yellow !important;
+}
+.bi-heart-fill {
+  color: #00b18f !important;
+}

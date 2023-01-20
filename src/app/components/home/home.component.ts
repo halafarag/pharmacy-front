@@ -14,6 +14,7 @@ export class HomeComponent {
   catList: any;
   prdList: Product | any;
   selectPage: number = 1;
+
   constructor(
     private catService: CategoryService,
     private prdService: ProductService,
@@ -53,6 +54,7 @@ export class HomeComponent {
       this.getAllProducts();
     }
   }
+
   ngOnInit(): void {
     this.getAllCategory();
     this.getAllProducts();

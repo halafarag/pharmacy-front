@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product';
 import { Subcategory } from 'src/app/models/subcategory';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { FavouriteService } from 'src/app/services/favourite.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import Swal from 'sweetalert2';
@@ -21,12 +22,14 @@ export class SubCategoryComponent {
   cartList: Cart | any;
   searchPrd: Product | any;
   searchText: any;
+  isFav: boolean = false;
   constructor(
     private prdService: ProductService,
     private activatedroute: ActivatedRoute,
     private subService: SubcategoryService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private favService: FavouriteService
   ) {}
 
   // DESPLAY ALL PRODUCTS FOR SPECFIC CATEGORY IN CARD (get product by cat id)
@@ -35,7 +38,7 @@ export class SubCategoryComponent {
     this.prdService.getPrdByCatID(id || '').subscribe((data: any) => {
       this.prdList = data;
       console.log(data);
-      console.log(data[0].category.name);
+      // console.log(data[0].category.name);
     });
   }
   // DISPLAY SUBCATEGREIES FOR THIS CATEGORY in header
@@ -94,10 +97,7 @@ export class SubCategoryComponent {
   //     alert('product not found');
   //   }
   // }
-  ngOnInit() {
-    this.getPrdByCatID();
-    this.getSubOfCategory();
-  }
+
   sort(event: any) {
     switch (event.target.value) {
       case 'Low': {
@@ -135,5 +135,38 @@ export class SubCategoryComponent {
       }
     }
     return this.prdList;
+  }
+
+  addFav() {
+    this.isFav = !this.isFav;
+    // console.log(userId, prdId);
+    // this.isFav = !this.isFav;
+    // if (this.isFav) {
+    //   this.favService.addToFav(prdId, userId).subscribe({
+    //     next: (fav) => {
+    //       console.log(fav);
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //     },
+    //     complete: () => {
+    //       Swal.fire({
+    //         position: 'top-end',
+    //         icon: 'success',
+    //         title: 'Product added to your favs sucsessfully ',
+    //         showConfirmButton: false,
+    //         timer: 1500,
+    //       });
+    //     },
+    //   });
+    // } else {
+    //   this.favService.removeFav(userId).subscribe((favs) => {
+    //    this.ngOnInit();
+    //   });
+    // }
+  }
+  ngOnInit() {
+    this.getPrdByCatID();
+    this.getSubOfCategory();
   }
 }
