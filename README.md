@@ -1,3 +1,13 @@
+### Online-Pharmacy (Angular&NodeJS)
+
+[Live](https://pharmacy-front.vercel.app/main/home)
+
+<hr>
+<br>
+<br>
+
+> this is a Pharmacy clone project i made to practise to improve my skills .
+
 # Pharmacy
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.2.
