@@ -45,6 +45,7 @@ export class LoginComponent {
         timer: 1500,
       });
       this.router.navigate(['/main/home']);
+      window.scrollTo(0, 0);
     });
   }
 }

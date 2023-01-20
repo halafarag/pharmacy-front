@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { enviroment } from 'src/enviroment/Enviroment';
 import { Cart } from '../models/cart';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class CartService {
   constructor(private http: HttpClient) {}
   addToCart(product: any, user: any, amount: number): Observable<Cart> {
     return this.http.post<Cart>(
-      `http://localhost:8081/cart`,
+      `${enviroment.apiBaseUrl}/cart`,
       {
         product,
         user,
@@ -27,13 +28,13 @@ export class CartService {
   }
   getCartByUserID(id: string): Observable<Cart> {
     return this.http.get<Cart>(
-      `http://localhost:8081/cart/${id}`,
+      `${enviroment.apiBaseUrl}/cart/${id}`,
       this.httpOPtions
     );
   }
   deleteCart(id: string) {
     return this.http.delete(
-      `http://localhost:8081/cart/${id}`,
+      `${enviroment.apiBaseUrl}/cart/${id}`,
       this.httpOPtions
     );
   }

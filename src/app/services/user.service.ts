@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { enviroment } from 'src/enviroment/Enviroment';
 import { User } from '../models/user';
 
 @Injectable({
@@ -10,14 +11,17 @@ export class UserService {
   constructor(private http: HttpClient) {}
   //REGISTER
   register(user: User): Observable<User> {
-    return this.http.post<User>('http://localhost:8081/users/register', user);
+    return this.http.post<User>(
+      `${enviroment.apiBaseUrl}/users/register`,
+      user
+    );
   }
   //LOGIN
   login(user: User): Observable<User> {
-    return this.http.post<User>(`http://localhost:8081/users/login`, user);
+    return this.http.post<User>(`${enviroment.apiBaseUrl}/users/login`, user);
   }
   // LOGOUT
   logout(id: string) {
-    return this.http.get(`http://localhost:8081/users/logout/${id}`);
+    return this.http.get(`${enviroment.apiBaseUrl}/users/logout/${id}`);
   }
 }

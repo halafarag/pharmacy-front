@@ -21,7 +21,7 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'subCategory/:id', component: SubCategoryComponent },
-      { path: 'productOfSub', component: ProductsOfSubCatComponent },
+      { path: 'productOfSub/:id', component: ProductsOfSubCatComponent },
       { path: 'details/:id', component: DetailsComponent },
       { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
       { path: 'blog', component: BlogComponent },

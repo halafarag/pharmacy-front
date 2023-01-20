@@ -1,11 +1,13 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
+import { Subcategory } from 'src/app/models/subcategory';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -19,13 +21,14 @@ export class HeaderComponent {
   prdList: Product | any;
   id: string | any;
   userName: string | any;
+  subList: Subcategory | any;
   searchText: any;
   constructor(
     private cartService: CartService,
     private userServic: UserService,
     private router: Router,
     private catService: CategoryService,
-    private prdServic: ProductService
+    private subServic: SubcategoryService
   ) {}
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -50,7 +53,6 @@ export class HeaderComponent {
     this.id = localStorage.getItem('id');
     this.cartService.getCartByUserID(this.id || '').subscribe((data: any) => {
       this.cartList = data;
-      // console.log(this.cartList);
     });
   }
   logout() {
@@ -63,12 +65,17 @@ export class HeaderComponent {
   getAllCategory() {
     this.catService.getAllCategory().subscribe((data: Category) => {
       this.catList = data;
-      // console.log(this.catList[0].name);
     });
   }
-  getPrdByCatID(id: string) {
-    this.prdServic.getPrdByCatID(id || '').subscribe((data) => {
-      this.prdList = data;
+  // getPrdByCatID(id: string) {
+  //   this.prdServic.getPrdByCatID(id || '').subscribe((data) => {
+  //     this.prdList = data;
+  //     console.log(data);
+  //   });
+  // }
+  getSubByCatID(catID: string) {
+    this.subServic.getAllSubOfCategory(catID || '').subscribe((data) => {
+      this.subList = data;
       console.log(data);
     });
   }

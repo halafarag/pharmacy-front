@@ -9,7 +9,7 @@
     <!-- subcategory -->
     <div class="d-flex col-lg-5 col-sm-2 m-auto">
       <input
-        class="form-control me-2 rounded-pill m-5"
+        class="form-control me-2 rounded-pill m-5 mt-0 col-5"
         type="search"
         placeholder="Search with product name or his id"
         aria-label="Search"
@@ -17,6 +17,7 @@
         name="search"
         [(ngModel)]="searchText"
       />
+
       <!-- <button class="btn btn-outline-success"> -->
       <!-- (click)="searchFun(prdName.value)" -->
       <!-- Search
@@ -24,35 +25,44 @@
     </div>
 
     <div
-      class="row d-flex justify-content-center align-items-center m-auto col-9"
+      class="row d-flex justify-content-center align-items-center m-auto col-10"
     >
       <a
         *ngFor="let sub of subList"
         type="button"
-        class="btn px-2 rounded-pill border-0 shadow text-muted m-3 col-sm-2 sub"
+        class="btn rounded-pill border-0 shadow text-muted m-1 col-sm-2 sub"
         (click)="getPrdOfSubID(sub)"
         >{{ sub.name }}</a
       >
+      <select
+        (change)="sort($event)"
+        id="sort-by"
+        class="rounded-pill border-0 shadow text-muted m-2 col-sm-1 p-1"
+      >
+        <option value="" selected disabled hidden>Sort By</option>
+        <option value="Name">Name</option>
+        <option value="Low">Show Low to High Price</option>
+        <option value="High">Show High to Low Price</option>
+      </select>
     </div>
 
     <!-- products -->
     <div
       class="row d-flex justify-content-center align-items-center m-auto col-10"
     >
-      <div class="col-xl-3 col-md-6 col-sm-12 p-1">
+      <!-- <div class="col-xl-3 col-md-6 col-sm-12 p-1">
         <div class="card mb-3 shadow" style="width: 262px; height: 400px">
           <ul class="list-group pt-0 mt-0">
             <li
               class="list-group-item text-muted d-flex justify-content-between align-items-center border-top-0 fw-bold"
             >
-              <!-- {{ sub.category.name }} -->
               Brand
               <span class="text-success fw-bold mb-3"> __</span>
             </li>
             <li
               class="list-group-item text-muted d-flex justify-content-between align-items-center border-top-0 border-bottom-0"
             >
-              A list item
+              Price less than 100
               <span class=" ">
                 <input
                   class="form-check-input me-1 text-success"
@@ -136,7 +146,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <div
         class="col-xl-3 col-md-6 col-sm-12"
         *ngFor="let prd of prdList | filter : searchText"

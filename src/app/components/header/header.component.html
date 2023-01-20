@@ -47,15 +47,14 @@
           <ul
             class="dropdown-menu mt-4 row"
             aria-labelledby="dropdownMenu2"
-            style="width: 1050px !important"
+            style="width: 450px !important"
           >
             <li *ngFor="let cat of catList">
-              <a
-                class="dropdown-item p-2 column"
-                type="button"
-                (click)="getPrdByCatID(cat._id)"
-                >{{ cat?.name }}</a
-              >
+              <div class="btn-group dropstart">
+                <a type="button" class="btn" (click)="getSubByCatID(cat._id)">
+                  {{ cat?.name }}
+                </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -83,6 +82,8 @@
           >About Us</a
         >
       </li>
+
+      <!-- /.nav-collapse -->
     </ul>
     <!-- Center elements -->
 
@@ -92,16 +93,16 @@
         <ul class="navbar-nav flex-row">
           <li class="nav-item me-5 pe-5 me-lg-1">
             <!-- Search form -->
-            <!-- <form class="input-group w-auto my-auto d-none d-sm-flex p-2"> -->
-            <input
-              type="search"
-              class="form-control rounded rounded-pill text-success shadow"
-              placeholder="Search"
-              id="search"
-              name="search"
-              style="min-width: 125px; color: #00b18f"
-            />
-            <!-- </form> -->
+            <!-- <form class="input-group w-auto my-auto d-none d-sm-flex p-2">
+              <input
+                type="search"
+                class="form-control rounded rounded-pill text-success shadow"
+                placeholder="Search"
+                id="search"
+                name="search"
+                style="min-width: 125px; color: #00b18f"
+              />
+            </form> -->
           </li>
           <div class="d-flex align-items-center p-2">
             <button
@@ -115,17 +116,6 @@
               <i class="bi bi-list"></i>
             </button>
           </div>
-          <!-- <li class="nav-item me-lg-1 p-2 text-white col">
-            <select
-              class="form-select rounded-pill text-white"
-              aria-label="Default select example"
-              style="background-color: transparent"
-            >
-              <option selected class="text-dark">Open</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-            </select>
-          </li> -->
 
           <li class="nav-item me-lg-1 p-2 pe-5 col mt-1">
             <a class=""
@@ -198,9 +188,14 @@
 
                 <div class="d-flex align-items-end justify-content-end">
                   <a
-                    class="btn btn-dark w-25 mt-4 mx-auto shadow user mt-5"
+                    class="btn w-25 mt-4 mx-auto shadow user mt-5 text-white"
                     data-bs-dismiss="offcanvas"
                     (click)="logout()"
+                    style="
+                      background-color: #00b18f;
+                      margin-top: 450px !important;
+                    "
+                    [hidden]="id == null"
                     >LOGOUT</a
                   >
                 </div>

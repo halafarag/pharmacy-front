@@ -10,11 +10,21 @@
       class="row d-flex justify-content-center align-items-center m-auto col-9"
     >
       <a
-        *ngFor="let sub of prdList"
         type="button"
         class="btn rounded-pill border-0 shadow text-muted m-3 col-3 sub"
-        >{{ sub.title }}</a
       >
+        {{ prdList[0].subcategory.name }}
+      </a>
+      <select
+        (change)="sort($event)"
+        id="sort-by"
+        class="rounded-pill border-0 shadow text-muted m-2 col-sm-2 p-1"
+      >
+        <option value="" selected disabled hidden>Sort By</option>
+        <option value="Name">Name</option>
+        <option value="Low">Show Low to High Price</option>
+        <option value="High">Show High to Low Price</option>
+      </select>
     </div>
     <!-- products -->
     <div

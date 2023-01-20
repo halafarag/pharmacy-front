@@ -40,7 +40,7 @@ export class SubCategoryComponent {
   }
   // DISPLAY SUBCATEGREIES FOR THIS CATEGORY in header
   getSubOfCategory() {
-    const id = this.activatedroute.snapshot.paramMap.get('_id');
+    const id = this.activatedroute.snapshot.paramMap.get('id');
     this.subService.getAllSubOfCategory(id || '').subscribe((data: any) => {
       this.subList = data;
       // console.log(data);
@@ -48,8 +48,9 @@ export class SubCategoryComponent {
     });
   }
   // DESPLAY PRODUCT FOR THIS SUB
-  getPrdOfSubID(subId: string) {
-    this.router.navigate(['/main/productOfSub', subId]);
+  getPrdOfSubID(subId: Product) {
+    console.log(subId);
+    this.router.navigate([`/main/productOfSub/${subId._id}`]);
     window.scrollTo(0, 0);
   }
   //PRODUCT DETAILS
@@ -96,5 +97,43 @@ export class SubCategoryComponent {
   ngOnInit() {
     this.getPrdByCatID();
     this.getSubOfCategory();
+  }
+  sort(event: any) {
+    switch (event.target.value) {
+      case 'Low': {
+        this.prdList = this.prdList.sort(
+          (low: any, high: any) => low.price - high.price
+        );
+        break;
+      }
+
+      case 'High': {
+        this.prdList = this.prdList.sort(
+          (low: any, high: any) => high.price - low.price
+        );
+        break;
+      }
+
+      case 'Name': {
+        this.prdList = this.prdList.sort(function (low: any, high: any) {
+          if (low.name < high.name) {
+            return -1;
+          } else if (low.name > high.name) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
+        break;
+      }
+
+      default: {
+        this.prdList = this.prdList.sort(
+          (low: any, high: any) => low.price - high.price
+        );
+        break;
+      }
+    }
+    return this.prdList;
   }
 }
