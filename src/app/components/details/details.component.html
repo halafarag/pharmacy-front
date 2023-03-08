@@ -3,11 +3,6 @@
     <div class="row d-flex col-11 m-auto">
       <div class="col-lg-4 col-sm-12 m-auto m-0 p-0">
         <div class="card im border-0 shadow">
-          <!-- <img
-            src="{{ product?.img }}"
-            class="card-img-top img-fluid m-auto rounded-5"
-            loading="lazy"
-          /> -->
           <lib-ngx-image-zoom
             class="ngxImageZoomContainer card-img-top img-fluid m-auto rounded-5"
             [thumbImage]="product?.img"
@@ -43,18 +38,16 @@
             *ngIf="product.quantity >= 1"
             >ADD TO CART</a
           >
-          <a href="" class="col-4"
-            ><i class="bi bi-heart fs-4 text-secondary"></i
-          ></a>
+          <span class="col-4">
+            <span
+              class="bi"
+              [class.bi-heart-fill]="isFav"
+              [class.bi-heart]="!isFav"
+              (click)="addFav()"
+            ></span
+          ></span>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--  -->
-<!-- <h1>title</h1>
-<lib-ngx-image-zoom
-  [thumbImage]="product?.img"
-  [fullImage]="product?.img"
-  [magnification]="5"
-></lib-ngx-image-zoom> -->

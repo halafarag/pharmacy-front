@@ -22,7 +22,7 @@ export class SubCategoryComponent {
   cartList: Cart | any;
   searchPrd: Product | any;
   searchText: any;
-  isFav: boolean = false;
+
   constructor(
     private prdService: ProductService,
     private activatedroute: ActivatedRoute,
@@ -72,6 +72,7 @@ export class SubCategoryComponent {
         console.log(err);
       },
       complete: () => {
+        this.ngOnInit();
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -137,34 +138,6 @@ export class SubCategoryComponent {
     return this.prdList;
   }
 
-  addFav() {
-    this.isFav = !this.isFav;
-    // console.log(userId, prdId);
-    // this.isFav = !this.isFav;
-    // if (this.isFav) {
-    //   this.favService.addToFav(prdId, userId).subscribe({
-    //     next: (fav) => {
-    //       console.log(fav);
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //     },
-    //     complete: () => {
-    //       Swal.fire({
-    //         position: 'top-end',
-    //         icon: 'success',
-    //         title: 'Product added to your favs sucsessfully ',
-    //         showConfirmButton: false,
-    //         timer: 1500,
-    //       });
-    //     },
-    //   });
-    // } else {
-    //   this.favService.removeFav(userId).subscribe((favs) => {
-    //    this.ngOnInit();
-    //   });
-    // }
-  }
   ngOnInit() {
     this.getPrdByCatID();
     this.getSubOfCategory();
