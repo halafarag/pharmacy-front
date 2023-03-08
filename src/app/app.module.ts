@@ -21,7 +21,7 @@ import { HeaderColorDirective } from './directives/header-color.directive';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
-
+import { NgxImageZoomModule } from 'ngx-image-zoom';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +48,7 @@ import { BlogComponent } from './components/blog/blog.component';
     ReactiveFormsModule,
     Ng2SearchPipeModule,
     FormsModule,
+    NgxImageZoomModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

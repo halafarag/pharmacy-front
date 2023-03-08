@@ -5,3 +5,15 @@
   background-color: #00b18f;
   color: white !important;
 }
+::ng-deep .ngxImageZoomContainer > img {
+  max-height: 500px;
+}
+:host {
+  ::ng-deep .ngxImageZoomContainer {
+    width: 100% !important;
+  }
+
+  ::ng-deep .ngxImageZoomThumbnail {
+    width: 100% !important;
+  }
+}

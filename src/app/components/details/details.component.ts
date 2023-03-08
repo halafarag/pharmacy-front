@@ -21,6 +21,10 @@ export class DetailsComponent {
       // console.log(data);
     });
   }
+  // thumbImage =
+  //   'https://www.imgacademy.com/sites/default/files/2022-07/img-homepage-meta.jpg';
+  // fullImage =
+  //   'https://www.imgacademy.com/sites/default/files/2022-07/img-homepage-meta.jpg';
   ngOnInit(): void {
     this.getProductByID();
   }
