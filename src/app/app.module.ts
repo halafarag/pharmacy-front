@@ -17,11 +17,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsOfSubCatComponent } from './components/products-of-sub-cat/products-of-sub-cat.component';
 import { CartComponent } from './components/cart/cart.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
-import { HeaderColorDirective } from './directives/header-color.directive';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { SliderComponent } from './components/slider/slider.component';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { HomeCategoryComponent } from './components/home-category/home-category.component';
+import { OffersComponent } from './components/offers/offers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +40,12 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
     ProductsOfSubCatComponent,
     CartComponent,
     FavouriteComponent,
-    HeaderColorDirective,
     AboutUsComponent,
     BlogComponent,
+    SliderComponent,
+    ArticlesComponent,
+    HomeCategoryComponent,
+    OffersComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { Product } from 'src/app/models/product';
@@ -16,12 +16,13 @@ import { CartComponent } from '../cart/cart.component';
   templateUrl: './subCategory.component.html',
   styleUrls: ['./subCategory.component.scss'],
 })
-export class SubCategoryComponent {
+export class SubCategoryComponent implements OnInit {
   prdList: Product | any;
   subList: Subcategory | any;
   cartList: Cart | any;
   searchPrd: Product | any;
   searchText: any;
+  id: string = '';
 
   constructor(
     private prdService: ProductService,
@@ -34,25 +35,22 @@ export class SubCategoryComponent {
 
   // DESPLAY ALL PRODUCTS FOR SPECFIC CATEGORY IN CARD (get product by cat id)
   getPrdByCatID() {
-    const id = this.activatedroute.snapshot.paramMap.get('id');
-    this.prdService.getPrdByCatID(id || '').subscribe((data: any) => {
+    this.prdService.getPrdByCatID(this.id || '').subscribe((data: any) => {
       this.prdList = data;
-      console.log(data);
-      // console.log(data[0].category.name);
+      // console.log(data);
     });
   }
   // DISPLAY SUBCATEGREIES FOR THIS CATEGORY in header
   getSubOfCategory() {
-    const id = this.activatedroute.snapshot.paramMap.get('id');
-    this.subService.getAllSubOfCategory(id || '').subscribe((data: any) => {
-      this.subList = data;
-      // console.log(data);
-      // console.log(data[0].category.name);
-    });
+    this.subService
+      .getAllSubOfCategory(this.id || '')
+      .subscribe((data: any) => {
+        this.subList = data;
+      });
   }
   // DESPLAY PRODUCT FOR THIS SUB
   getPrdOfSubID(subId: Product) {
-    console.log(subId);
+    // console.log(subId);
     this.router.navigate([`/main/productOfSub/${subId._id}`]);
     window.scrollTo(0, 0);
   }
@@ -64,40 +62,29 @@ export class SubCategoryComponent {
   // ADD TO CART
   public user = localStorage.getItem('id');
   addToCart(prd: any, user: any, amount: any) {
-    this.cartService.addToCart(prd, user, amount).subscribe({
-      next: (cart) => {
-        console.log(cart);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete: () => {
-        this.ngOnInit();
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Product added to your cart sucsessfully ',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      },
-    });
-    console.log(prd, user);
+    if (user) {
+      this.cartService.addToCart(prd, user, amount).subscribe({
+        next: (cart) => {
+          // console.log(cart);
+        },
+        error: (err) => {
+          // console.log(err);
+        },
+        complete: () => {
+          this.ngOnInit();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Product added to your cart sucsessfully ',
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        },
+      });
+    } else {
+      alert('You Must Login First');
+    }
   }
-  // SEARCH
-  // searchProdcutByName(prdName: string): Product | undefined {
-  //   return this.prdList.find((searchPrd: Product) => searchPrd.name == prdName);
-  // }
-  // searchFun(prdName: string) {
-  //   console.log(prdName);
-  //   let result = this.searchProdcutByName(prdName);
-  //   console.log(result);
-  //   if (result) {
-  //     this.searchPrd = result;
-  //   } else {
-  //     alert('product not found');
-  //   }
-  // }
 
   sort(event: any) {
     switch (event.target.value) {
@@ -139,7 +126,12 @@ export class SubCategoryComponent {
   }
 
   ngOnInit() {
-    this.getPrdByCatID();
-    this.getSubOfCategory();
+    this.activatedroute.params.subscribe({
+      next: (val) => {
+        this.id = val['id'];
+        this.getPrdByCatID();
+        this.getSubOfCategory();
+      },
+    });
   }
 }

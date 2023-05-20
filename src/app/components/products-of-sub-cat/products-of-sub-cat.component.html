@@ -157,12 +157,29 @@
             <p *ngIf="prd.quantity < 1" class="text-danger pt-2">
               Out of stock
             </p>
-            <a
-              *ngIf="prd.quantity >= 1"
-              type="button"
-              class="pt-2 btn btnCart text-muted shadow rounded-pill mt-4"
-              >ADD TO CART</a
-            >
+            <div class="row d-flex justify-content-between mt-3">
+              <select
+                [hidden]="prd.quantity < 1"
+                class="form-select w-50 rounded-pill shadow"
+                aria-label="Default select example"
+                #cartAmount
+              >
+                <option selected>Amount</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+              <a
+                type="button"
+                class="pt-2 btn btnCart text-muted shadow rounded-pill w-50"
+                (click)="addToCart(prd, user, cartAmount.value)"
+                *ngIf="prd.quantity >= 1"
+                >ADD TO CART</a
+              >
+            </div>
           </div>
         </div>
       </div>

@@ -62,7 +62,7 @@ export class DetailsComponent {
       if ('favourite' in localStorage) {
         this.favList = JSON.parse(localStorage.getItem('favourite')!);
         const existProduct = this.favList.find((item) => item.prdId == prdId);
-        console.log(this.favList);
+        // console.log(this.favList);
         if (existProduct) {
           this.isFav = true;
           alert('this product is already in your favourite');

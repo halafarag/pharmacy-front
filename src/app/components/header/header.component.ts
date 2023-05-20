@@ -31,24 +31,6 @@ export class HeaderComponent {
     private subServic: SubcategoryService
   ) {}
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    // let element = document.querySelector('.background') as HTMLElement;
-    // let element3 = window.document.getElementsByClassName(
-    //   'ahmed'
-    // ) as HTMLCollection;
-    // console.log(element3);
-    // if (window.pageYOffset > element.clientHeight) {
-    //   element.classList.add('bg-light');
-    //   Array.from(element3).forEach((i) => {
-    //     i.classList.replace('text-white', 'text-success');
-    //   });
-    // } else {
-    //   element.classList.remove('bg-light');
-    //   Array.from(element3).forEach((i) => {
-    //     i.classList.replace('text-success', 'text-white');
-    //   });
-    // }
-  }
   getCartByUserID() {
     this.id = localStorage.getItem('id');
     this.cartService.getCartByUserID(this.id || '').subscribe((data: any) => {
@@ -60,6 +42,7 @@ export class HeaderComponent {
     this.userServic.logout(this.id || '').subscribe(() => {
       localStorage.clear();
       this.router.navigate(['/main/home']);
+      this.ngOnInit();
     });
   }
   getAllCategory() {
@@ -73,12 +56,7 @@ export class HeaderComponent {
   //     console.log(data);
   //   });
   // }
-  getSubByCatID(catID: string) {
-    this.subServic.getAllSubOfCategory(catID || '').subscribe((data) => {
-      this.subList = data;
-      console.log(data);
-    });
-  }
+
   ngOnInit(): void {
     this.getCartByUserID();
     this.getAllCategory();

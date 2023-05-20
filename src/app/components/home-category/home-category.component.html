@@ -1,0 +1,37 @@
+<div
+  class="row d-flex justify-content-center align-items-center m-auto mt-5 py-5 pb-3"
+>
+  <div class="text-center">
+    <p style="color: rgb(196, 216, 45); font-size: 16px; letter-spacing: 3px">
+      BROWSE PRODUCTS BY
+    </p>
+    <h1
+      class="pt-2 mb-5 fw-bold"
+      style="
+        color: rgb(0, 177, 143);
+
+        font-size: 34px;
+        letter-spacing: 3px;
+      "
+    >
+      OUR CATEGORIES
+    </h1>
+  </div>
+  <div class="col-lg-2 col-md-3 col-sm-5 ms-1 mb-4" *ngFor="let cat of catList">
+    <div class="card text-white border-0 rounded">
+      <img [src]="cat.img" class="card-img border-0 img1" />
+      <div class="card-img-overlay">
+        <div
+          class="child1 d-flex justify-content-center align-items-center fs-5 fw-bold"
+        >
+          <a
+            type="button"
+            class="nav-link text-white"
+            (click)="getPrdByCatID(cat)"
+            >{{ cat?.name }}</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

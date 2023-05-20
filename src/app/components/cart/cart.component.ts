@@ -14,11 +14,11 @@ export class CartComponent {
     const id = localStorage.getItem('id');
     this.cartService.getCartByUserID(id || '').subscribe((data) => {
       this.cartList = data;
-      console.log(data);
+      // console.log(data);
     });
   }
   remove(id: string) {
-    console.log(id);
+    // console.log(id);
     this.cartService.deleteCart(id || '').subscribe((cart) => {
       this.ngOnInit();
       window.scrollTo(0, 0);

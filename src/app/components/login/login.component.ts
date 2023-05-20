@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,13 +12,14 @@ import Swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   newUser: any;
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
     private router: Router
   ) {}
+  ngOnInit(): void {}
   loginForm = this.fb.group({
     userName: ['', [Validators.required]],
     password: ['', [Validators.required]],
@@ -33,10 +34,13 @@ export class LoginComponent {
     this.newUser = this.loginForm.value;
     this.userService.login(this.newUser || '').subscribe((data) => {
       this.newUser = data;
+
       // console.log(data);
       localStorage.setItem('userName', this.newUser.userName);
       localStorage.setItem('accessToken', this.newUser.accessToken);
       localStorage.setItem('id', this.newUser._id);
+      this.ngOnInit();
+      this.router.navigate(['/main/home']);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -44,7 +48,6 @@ export class LoginComponent {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.router.navigate(['/main/home']);
       window.scrollTo(0, 0);
     });
   }

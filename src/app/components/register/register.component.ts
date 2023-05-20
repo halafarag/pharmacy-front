@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
@@ -11,13 +12,18 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent {
   newUser: any;
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  error: string = '';
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
   registerForm = this.fb.group({
     userName: ['', [Validators.required, Validators.minLength(3)]],
     emailAdress: ['', [Validators.required, Validators.email]],
     moblieNum: [
       '',
-      [Validators.required, Validators.pattern('^((\\+20-?)|0)?[0-9]{10}$')],
+      [Validators.required, Validators.pattern('^((\\+20-?)|0)?[0-9]{11}$')],
     ],
     password: [
       '',
@@ -43,10 +49,12 @@ export class RegisterComponent {
     this.newUser = this.registerForm.value;
     this.userService.register(this.newUser || '').subscribe({
       next: (newUser) => {
-        console.log(newUser);
+        // console.log(newUser);
       },
       error: (err) => {
         console.log(err);
+        this.error = err.error;
+        alert(JSON.stringify(this.error));
       },
       complete: () => {
         Swal.fire({
@@ -56,6 +64,7 @@ export class RegisterComponent {
           showConfirmButton: false,
           timer: 1500,
         });
+        this.router.navigate(['main/login']);
       },
     });
   }
