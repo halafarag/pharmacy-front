@@ -27,7 +27,7 @@
         id="card"
         *ngIf="prd.discount > 20"
       >
-        <a (click)="prdDetails(prd._id)">
+        <a>
           <img
             [src]="prd.img"
             class="card-img-top pb-0 mb-0 border m-auto img-fluid rounded-0"
@@ -58,6 +58,7 @@
 
         <div class="card-body d-flex justify-content-between pb-0 mb-0">
           <a
+            (click)="addToCart(prd, user, 1)"
             type="submit"
             class="btn rounded-pill stretched-link w-75 shadow cart p-2"
             >ADD TO CART</a

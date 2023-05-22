@@ -6,7 +6,6 @@ import { Product } from 'src/app/models/product';
 import { Subcategory } from 'src/app/models/subcategory';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
-import { ProductService } from 'src/app/services/product.service';
 import { SubcategoryService } from 'src/app/services/subcategory.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -20,7 +19,7 @@ export class HeaderComponent {
   catList: Category | any;
   prdList: Product | any;
   id: string | any;
-  userName: string | any;
+  userName: string | undefined;
   subList: Subcategory | any;
   searchText: any;
   constructor(
@@ -50,13 +49,6 @@ export class HeaderComponent {
       this.catList = data;
     });
   }
-  // getPrdByCatID(id: string) {
-  //   this.prdServic.getPrdByCatID(id || '').subscribe((data) => {
-  //     this.prdList = data;
-  //     console.log(data);
-  //   });
-  // }
-
   ngOnInit(): void {
     this.getCartByUserID();
     this.getAllCategory();
